@@ -4,6 +4,12 @@ import java.util.Scanner;
 public class VehicleManager {
     HashMap<String, Vehicle> vehicleMap = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
+    ReportManager reportManager;
+
+
+    public VehicleManager(ReportManager reportManager) {
+        this.reportManager = reportManager;
+    }
 
     // Add a vehicle
     public void addVehicle() {
