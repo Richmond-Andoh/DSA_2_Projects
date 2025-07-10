@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        VehicleManager manager = new VehicleManager();
         DriverManager manage_driver = new DriverManager();
         DeliveryManager manage_delivery = new DeliveryManager();
+        MaintenanceManager manage_maintenance = new MaintenanceManager();
+        ReportManager reportManager = new ReportManager();
+        VehicleManager manage_vehicle = new VehicleManager(reportManager);
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -22,6 +24,14 @@ public class Main {
             System.out.println("9. View Deliveries");
             System.out.println("10. Update Delivery Status");
             System.out.println("11. Reroute Delivery");
+            System.out.println("12. Schedule Vehicle Maintenance");
+            System.out.println("13. View Maintenance Queue");
+            System.out.println("14. Perform Next Maintenance");
+            System.out.println("15. View Fuel Efficiency Report");
+            System.out.println("16. Filter Vehicles by Type");
+            System.out.println("17. Sort Vehicles by Mileage (Insertion)");
+            System.out.println("18. Sort Vehicles by Driver Name (Merge)");
+            System.out.println("19. Sort Vehicles by Fuel Usage (Quick)");
 
             System.out.println("0. Exit");
             System.out.print("Enter choice: ");
@@ -29,16 +39,16 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    manager.addVehicle();
+                    manage_vehicle.addVehicle();
                     break;
                 case 2:
-                    manager.searchVehicle();
+                    manage_vehicle.searchVehicle();
                     break;
                 case 3:
-                    manager.removeVehicle();
+                    manage_vehicle.removeVehicle();
                     break;
                 case 4:
-                    manager.showAllVehicles();
+                    manage_vehicle.showAllVehicles();
                     break;
                 case 5:
                     manage_driver.addDriver();
@@ -60,6 +70,30 @@ public class Main {
                     break;
                 case 11:
                     manage_delivery.rerouteDelivery();
+                    break;
+                case 12:
+                    manage_maintenance.scheduleMaintenance();
+                    break;
+                case 13:
+                    manage_maintenance.viewScheduled();
+                    break;
+                case 14:
+                    manage_maintenance.performMaintenance();
+                    break;
+                case 15:
+                    reportManager.viewFuelReport();
+                    break;
+                case 16:
+                    reportManager.filterByType();
+                    break;
+                case 17:
+                    reportManager.insertionSortByMileage();
+                    break;
+                case 18:
+                    reportManager.mergeSortByDriverName();
+                    break;
+                case 19:
+                    reportManager.quickSortByFuelUsage();
                     break;
                 case 0:
                     System.out.println("👋 Goodbye!");
