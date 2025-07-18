@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class VehicleManager {
@@ -7,8 +8,29 @@ public class VehicleManager {
     ReportManager reportManager;
 
 
+    // Constructor Function
     public VehicleManager(ReportManager reportManager) {
         this.reportManager = reportManager;
+        List<Vehicle> loaded = FileManager.loadVehicles();
+        for (Vehicle v : loaded) {
+            vehicleMap.put(v.registrationNumber, v);
+            reportManager.addVehicleForReport(v);
+        }
+    }
+
+    // Save vehicles to file
+    public void saveVehiclesToFile() {
+        FileManager.saveVehicles(vehicleMap.values());
+    }
+
+    // Load vehicles from file
+    public void loadVehiclesFromFile() {
+        vehicleMap.clear();
+        List<Vehicle> loaded = FileManager.loadVehicles();
+        for (Vehicle v : loaded) {
+            vehicleMap.put(v.registrationNumber, v);
+            reportManager.addVehicleForReport(v);
+        }
     }
 
     // Add a vehicle
@@ -30,8 +52,8 @@ public class VehicleManager {
 
         Vehicle vehicle = new Vehicle(reg, type, mileage, fuelUsage, driverId);
         vehicleMap.put(reg, vehicle);
-
-        System.out.println("✅ Vehicle added!");
+        saveVehiclesToFile();
+        System.out.println("Vehicle added!");
     }
 
     // Search for a vehicle
@@ -43,7 +65,7 @@ public class VehicleManager {
             System.out.println("✅ Vehicle found:");
             System.out.println(vehicleMap.get(reg));
         } else {
-            System.out.println("❌ Vehicle not found.");
+            System.out.println("Vehicle not found.");
         }
     }
 
@@ -53,15 +75,16 @@ public class VehicleManager {
         String reg = scanner.nextLine();
 
         if (vehicleMap.remove(reg) != null) {
-            System.out.println("✅ Vehicle removed.");
+            saveVehiclesToFile();
+            System.out.println("Vehicle removed.");
         } else {
-            System.out.println("❌ Vehicle not found.");
+            System.out.println("Vehicle not found.");
         }
     }
 
     // Show all vehicles
     public void showAllVehicles() {
-        System.out.println("📋 All Vehicles:");
+        System.out.println("All Vehicles:");
         for (Vehicle v : vehicleMap.values()) {
             System.out.println(v);
         }
