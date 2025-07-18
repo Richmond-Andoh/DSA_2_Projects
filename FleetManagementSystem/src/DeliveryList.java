@@ -56,4 +56,15 @@ public class DeliveryList {
         }
         System.out.println("❌ Package not found.");
     }
+
+    // Return all deliveries as an Iterable
+    public Iterable<Delivery> getAllDeliveries() {
+        java.util.List<Delivery> list = new java.util.ArrayList<>();
+        DeliveryNode current = head;
+        while (current != null) {
+            list.add(current.data);
+            current = current.next;
+        }
+        return list;
+    }
 }

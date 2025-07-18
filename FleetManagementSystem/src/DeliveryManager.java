@@ -1,8 +1,22 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class DeliveryManager {
     DeliveryList deliveryList = new DeliveryList();
     Scanner scanner = new Scanner(System.in);
+
+    // Load deliveries from file using FileManager
+    public void loadDeliveriesFromFile() {
+        List<Delivery> loaded = FileManager.loadDeliveries();
+        for (Delivery d : loaded) {
+            deliveryList.addDelivery(d);
+        }
+    }
+
+    // Save deliveries to file using FileManager
+    public void saveDeliveriesToFile() {
+        FileManager.saveDeliveries(deliveryList.getAllDeliveries());
+    }
 
     // Add a new delivery
     public void createDelivery() {
@@ -28,6 +42,7 @@ public class DeliveryManager {
 
         Delivery delivery = new Delivery(id, origin, dest, vid, did, eta, status);
         deliveryList.addDelivery(delivery);
+        saveDeliveriesToFile();
     }
 
     // View all deliveries
@@ -44,6 +59,7 @@ public class DeliveryManager {
         String status = scanner.nextLine();
 
         deliveryList.updateStatus(id, status);
+        saveDeliveriesToFile();
     }
 
     // Reroute a delivery
@@ -55,5 +71,6 @@ public class DeliveryManager {
         String newDest = scanner.nextLine();
 
         deliveryList.reroute(id, newDest);
+        saveDeliveriesToFile();
     }
 }

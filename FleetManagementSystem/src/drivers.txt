@@ -1,0 +1,6 @@
+Kojo-1,Mr. Kojo,10,12,madina-zongo
+DR001,John Doe,5,2,Accra-Kumasi
+DR002,Jane Smith,3,1,Accra-Tema
+DR003,Kwame Boateng,7,0,Kumasi-Takoradi
+DR004,Akosua Mensah,4,3,Tema-Ho
+DR005,Francis Adu,6,1,CapeCoast-Accra
