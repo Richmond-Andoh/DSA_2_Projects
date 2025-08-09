@@ -1,6 +1,3 @@
 Pizza,madina,Adenta,GT-12,kofi-2,12:12,delivered
 PKG001,Accra,Kumasi,VEH001,DR001,14:00,in transit
 PKG002,Tema,Ho,VEH002,DR002,16:30,delivered
-PKG003,CapeCoast,Takoradi,VEH003,DR003,12:00,in transit
-PKG004,Accra,Tema,VEH004,DR004,10:45,delivered
-PKG005,Kumasi,Accra,VEH005,DR005,18:00,in transit
