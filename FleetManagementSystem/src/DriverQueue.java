@@ -7,7 +7,7 @@ public class DriverQueue {
     // Add driver to queue
     public void enqueue(Driver driver) {
         if (rear == MAX - 1) {
-            System.out.println("🚫 Driver queue is full!");
+            System.out.println("Driver queue is full!");
             return;
         }
         if (front == -1) front = 0;
@@ -17,7 +17,7 @@ public class DriverQueue {
     // Remove and return driver from front
     public Driver dequeue() {
         if (isEmpty()) {
-            System.out.println("🚫 No drivers available.");
+            System.out.println("No drivers available.");
             return null;
         }
         Driver driver = queue[front];
@@ -34,7 +34,7 @@ public class DriverQueue {
 
     public void displayDrivers() {
         if (isEmpty()) {
-            System.out.println("🚫 No drivers in queue.");
+            System.out.println("No drivers in queue.");
             return;
         }
         System.out.println("🧑‍✈️ Available Drivers:");

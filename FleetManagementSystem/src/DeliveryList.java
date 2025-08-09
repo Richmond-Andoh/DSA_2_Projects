@@ -13,13 +13,13 @@ public class DeliveryList {
             }
             current.next = newNode;
         }
-        System.out.println("✅ Delivery added.");
+        System.out.println("Delivery added.");
     }
 
     // Display all deliveries
     public void viewDeliveries() {
         if (head == null) {
-            System.out.println("🚫 No deliveries found.");
+            System.out.println("No deliveries found.");
             return;
         }
         DeliveryNode current = head;
@@ -40,7 +40,7 @@ public class DeliveryList {
             }
             current = current.next;
         }
-        System.out.println("❌ Package not found.");
+        System.out.println("Package not found.");
     }
 
     // Reroute a delivery
@@ -54,7 +54,7 @@ public class DeliveryList {
             }
             current = current.next;
         }
-        System.out.println("❌ Package not found.");
+        System.out.println("Package not found.");
     }
 
     // Return all deliveries as an Iterable
